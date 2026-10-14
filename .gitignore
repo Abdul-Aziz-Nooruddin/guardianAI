@@ -5,6 +5,7 @@ __pycache__/
 *.pyd
 *.egg-info/
 .venv/
+.venv
 venv/
 env/
 ENV/
@@ -12,18 +13,29 @@ ENV/
 # Environment variables
 .env
 .env.*
+!.env.example
+!*.env.example
+
+# Runtime Storage & Vector DB
+storage/
+backend/storage/
+.qdrant-initialized/
+.qdrant-initialized
+*.db
+*.sqlite3
 
 # Logs
 *.log
 
-# Pytest
+# Pytest & IDE
 .pytest_cache/
-
-# VS Code
 .vscode/
+.idea/
+.agents/
 
 # macOS
 .DS_Store
+*.qlpreview/
 
 # Windows
 Thumbs.db
@@ -31,6 +43,7 @@ Thumbs.db
 # Node
 node_modules/
 dist/
+presentation/node_modules/
 
 # Build
 build/

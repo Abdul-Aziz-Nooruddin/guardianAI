@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Mic, Square } from "lucide-react";
+import { useLanguage } from "../../shared/context/LanguageContext";
 
 interface MicButtonProps {
   onTranscript: (transcript: string) => void;
@@ -15,6 +16,7 @@ declare global {
 export default function MicButton({
   onTranscript,
 }: MicButtonProps): React.JSX.Element {
+  const { speechCode } = useLanguage();
   const [listening, setListening] = useState(false);
   const recognitionRef = useRef<any>(null);
 
@@ -23,13 +25,13 @@ export default function MicButton({
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      alert("Voice input isn't supported in this browser. Please use Chrome or Edge.");
+      alert("Voice input is supported in Chrome, Edge, and Safari.");
       return;
     }
 
     const recognition = new SpeechRecognition();
 
-    recognition.lang = "en-IN";
+    recognition.lang = speechCode || "en-IN";
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
@@ -55,22 +57,22 @@ export default function MicButton({
     <button
       onClick={listening ? stopListening : startListening}
       style={{
-        width: "42px",
-        height: "42px",
-        borderRadius: "50%",
-        border: "none",
-        background: listening ? "var(--critical)" : "#eef1f6",
-        color: listening ? "white" : "var(--text-secondary)",
+        width: "36px",
+        height: "36px",
+        borderRadius: "6px",
+        border: "1px solid var(--border-subtle)",
+        background: listening ? "var(--critical)" : "var(--bg-card)",
+        color: listening ? "#ffffff" : "var(--text-primary)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         cursor: "pointer",
         flexShrink: 0,
-        animation: listening ? "pulse-dot 1s infinite" : "none",
+        transition: "all 0.15s ease",
       }}
-      title={listening ? "Listening... click to stop" : "Tap to speak"}
+      title={listening ? "Listening... click to stop" : "Voice dictation"}
     >
-      {listening ? <Square size={16} /> : <Mic size={18} />}
+      {listening ? <Square size={14} /> : <Mic size={15} />}
     </button>
   );
 }

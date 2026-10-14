@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ps_banjara",
+    "name": "Banjara Hills Traffic & Law Enforcement Precinct",
+    "area": "Banjara Hills",
+    "latitude": 17.4156,
+    "longitude": 78.4350,
+    "patrol_cars_available": 4,
+    "tow_trucks_available": 2,
+    "officers_on_duty": 12,
+    "emergency_hotline": "+91-40-2785-2435",
+    "equipment": [
+      "traffic_diversion_kits",
+      "heavy_tow_truck",
+      "hydraulic_spreader",
+      "patrol_interceptor",
+      "crowd_control_barriers"
+    ]
+  },
+  {
+    "id": "ps_cyberabad",
+    "name": "Cyberabad Traffic Command & Corridor Division",
+    "area": "Hitec City / Madhapur",
+    "latitude": 17.4435,
+    "longitude": 78.3772,
+    "patrol_cars_available": 3,
+    "tow_trucks_available": 1,
+    "officers_on_duty": 8,
+    "emergency_hotline": "+91-40-2785-3000",
+    "equipment": [
+      "green_corridor_beacon",
+      "traffic_diversion_kits",
+      "patrol_interceptor"
+    ]
+  },
+  {
+    "id": "ps_secunderabad",
+    "name": "Secunderabad Central Police Division",
+    "area": "Secunderabad",
+    "latitude": 17.4399,
+    "longitude": 78.4983,
+    "patrol_cars_available": 2,
+    "tow_trucks_available": 1,
+    "officers_on_duty": 10,
+    "emergency_hotline": "+91-40-2785-1100",
+    "equipment": [
+      "patrol_interceptor",
+      "heavy_tow_truck",
+      "traffic_diversion_kits"
+    ]
+  }
+]

@@ -10,16 +10,17 @@ export default function ReportConfirmation({
   return (
     <div
       style={{
-        background: "#e8f4ea",
-        border: "1px solid #b7dfc0",
-        borderRadius: "10px",
-        padding: "10px 14px",
+        background: "var(--success-bg)",
+        border: "1px solid var(--success-border)",
+        borderRadius: "var(--radius-sm)",
+        padding: "8px 12px",
         marginTop: "8px",
-        fontSize: "13px",
-        color: "#1a5c2a",
+        fontSize: "12.5px",
+        color: "var(--success-text)",
+        fontWeight: 500,
       }}
     >
-      ✓ Report received — Rescue team notified
+      Report received — Rescue team notified
     </div>
   );
 }

@@ -108,10 +108,13 @@ export default function ResourcesView(): React.ReactElement {
               </div>
 
               <div
+                className="tabular-nums"
                 style={{
                   fontSize: "12px",
                   fontFamily: "var(--font-mono)",
                   marginTop: 4,
+                  fontWeight: 500,
+                  color: "var(--text-primary)",
                 }}
               >
                 {resource.capacity}

@@ -1,7 +1,7 @@
 [
   {
     "id": "h_a",
-    "name": "Hospital A",
+    "name": "Aster Prime Hospital",
     "area": "Ameerpet",
     "latitude": 17.4374,
     "longitude": 78.4482,
@@ -9,11 +9,18 @@
     "available_beds": 2,
     "icu_total": 20,
     "icu_available": 2,
-    "specialists": "cardiac,general"
+    "specialists": "cardiac,general",
+    "ambulances_available": 0,
+    "ambulance_ready": false,
+    "equipment": ["general_icu", "cardiac_monitor", "defibrillator", "ultrasound"],
+    "doctors_available": 2,
+    "on_duty_doctors": ["general_physician", "cardiologist"],
+    "emergency_hotline": "+91-40-2374-1001",
+    "status": "operational"
   },
   {
     "id": "h_b",
-    "name": "Hospital B",
+    "name": "Sunshine Multi-Speciality",
     "area": "Secunderabad",
     "latitude": 17.4399,
     "longitude": 78.4983,
@@ -21,23 +28,37 @@
     "available_beds": 11,
     "icu_total": 28,
     "icu_available": 18,
-    "specialists": "general,pediatric"
+    "specialists": "general,pediatric,cardiac",
+    "ambulances_available": 1,
+    "ambulance_ready": true,
+    "equipment": ["general_icu", "nicu", "ventilators", "pathology_lab"],
+    "doctors_available": 2,
+    "on_duty_doctors": ["pediatrician", "general_surgeon"],
+    "emergency_hotline": "+91-40-2780-2002",
+    "status": "operational"
   },
   {
     "id": "h_c",
-    "name": "Hospital C",
+    "name": "Apollo Emergency & Trauma Center",
     "area": "Banjara Hills",
-    "latitude": 17.4156,
-    "longitude": 78.4347,
+    "latitude": 17.4262,
+    "longitude": 78.4116,
     "total_beds": 30,
     "available_beds": 18,
     "icu_total": 30,
     "icu_available": 12,
-    "specialists": "orthopedic,trauma"
+    "specialists": "orthopedic,trauma,neuro,emergency_surgery",
+    "ambulances_available": 3,
+    "ambulance_ready": true,
+    "equipment": ["trauma_unit", "emergency_surgery", "icu_ventilator", "ct_scan", "blood_bank", "advanced_cardiac_life_support"],
+    "doctors_available": 4,
+    "on_duty_doctors": ["trauma_surgeon", "anesthesiologist", "orthopedic_surgeon", "emergency_medicine_head"],
+    "emergency_hotline": "+91-40-2360-7777",
+    "status": "operational"
   },
   {
     "id": "h_d",
-    "name": "Hospital D",
+    "name": "KIMS Emergency Care",
     "area": "Kukatpally",
     "latitude": 17.4849,
     "longitude": 78.4108,
@@ -45,6 +66,13 @@
     "available_beds": 6,
     "icu_total": 24,
     "icu_available": 8,
-    "specialists": "general"
+    "specialists": "general,orthopedic",
+    "ambulances_available": 2,
+    "ambulance_ready": true,
+    "equipment": ["general_icu", "x_ray", "trauma_triage", "oxygen_bank"],
+    "doctors_available": 2,
+    "on_duty_doctors": ["orthopedic_surgeon", "er_resident"],
+    "emergency_hotline": "+91-40-2772-5000",
+    "status": "operational"
   }
 ]

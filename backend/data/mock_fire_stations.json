@@ -1,0 +1,47 @@
+[
+  {
+    "id": "fs_central",
+    "name": "Secunderabad Fire & Rescue Command",
+    "area": "Secunderabad",
+    "latitude": 17.4399,
+    "longitude": 78.4983,
+    "fire_engines_available": 3,
+    "ladder_trucks_available": 1,
+    "water_tender_capacity_liters": 15000,
+    "hazmat_ready": true,
+    "crew_on_duty": 12,
+    "equipment": ["foam_tenders", "hydraulic_cutters", "thermal_imaging", "scba_kits", "aerial_ladder_platform"],
+    "emergency_hotline": "+91-40-2345-0101",
+    "status": "operational"
+  },
+  {
+    "id": "fs_west",
+    "name": "Banjara Hills Fire Substation",
+    "area": "Banjara Hills",
+    "latitude": 17.4156,
+    "longitude": 78.4347,
+    "fire_engines_available": 2,
+    "ladder_trucks_available": 1,
+    "water_tender_capacity_liters": 10000,
+    "hazmat_ready": false,
+    "crew_on_duty": 8,
+    "equipment": ["water_bowser", "breathing_apparatus", "heavy_rescue_tools"],
+    "emergency_hotline": "+91-40-2335-0102",
+    "status": "operational"
+  },
+  {
+    "id": "fs_north",
+    "name": "Kukatpally Industrial Fire Station",
+    "area": "Kukatpally",
+    "latitude": 17.4849,
+    "longitude": 78.4108,
+    "fire_engines_available": 0,
+    "ladder_trucks_available": 0,
+    "water_tender_capacity_liters": 0,
+    "hazmat_ready": true,
+    "crew_on_duty": 4,
+    "equipment": ["chemical_foam_dispenser"],
+    "emergency_hotline": "+91-40-2370-0103",
+    "status": "deployed"
+  }
+]

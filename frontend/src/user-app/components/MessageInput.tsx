@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent,type ChangeEvent } from "react";
+import { useState, type KeyboardEvent, type ChangeEvent } from "react";
 
 interface MessageInputProps {
   onSend: (message: string) => void;
@@ -29,8 +29,9 @@ export default function MessageInput({ onSend }: MessageInputProps) {
       style={{
         display: "flex",
         gap: "8px",
-        padding: "10px",
-        borderTop: "1px solid #e0e0e0",
+        padding: "12px 16px",
+        borderTop: "1px solid var(--border-subtle)",
+        background: "var(--bg-card)",
       }}
     >
       <input
@@ -38,26 +39,39 @@ export default function MessageInput({ onSend }: MessageInputProps) {
         value={text}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder="Type in Telugu, Hindi, Urdu, English..."
+        placeholder="Describe emergency in English, Telugu, Hindi, or Urdu..."
         style={{
           flex: 1,
-          padding: "10px 14px",
-          borderRadius: "20px",
-          border: "1px solid #ccc",
-          fontSize: "14px",
+          height: "44px",
+          padding: "0 14px",
+          borderRadius: "6px",
+          border: "1px solid var(--border-subtle)",
+          background: "var(--bg-input)",
+          color: "var(--text-primary)",
+          fontSize: "15px",
+          outline: "none",
+          fontFamily: "var(--font-body)",
+          transition: "border-color 0.15s ease",
         }}
       />
 
       <button
         onClick={handleSend}
         style={{
-          padding: "10px 18px",
-          borderRadius: "20px",
-          border: "none",
-          background: "#0c447c",
-          color: "white",
+          height: "44px",
+          padding: "0 20px",
+          borderRadius: "6px",
+          border: "1px solid var(--accent)",
+          background: "var(--accent)",
+          color: "var(--accent-text)",
           fontWeight: 500,
+          fontSize: "14px",
           cursor: "pointer",
+          fontFamily: "var(--font-body)",
+          transition: "opacity 0.15s ease",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         Send

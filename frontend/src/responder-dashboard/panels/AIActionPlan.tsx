@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle2, AlertTriangle, Sparkles } from "lucide-react";
+import { CheckCircle2, AlertTriangle } from "lucide-react";
 import type { Incident } from "../../shared/types";
 
 interface AIActionPlanProps {
@@ -15,18 +15,19 @@ export default function AIActionPlan({
 
   if (!incident) {
     return (
-      <div className="panel" style={{ flex: 1 }}>
+      <div className="panel" style={{ flex: 1, minWidth: "280px" }}>
         <div className="panel-header">
-          <span className="panel-title">AI Action Plan</span>
+          <span className="panel-title">Dispatch Recommendation</span>
         </div>
 
         <div
           style={{
             fontSize: "13px",
-            color: "var(--text-secondary)",
+            color: "var(--text-muted)",
+            padding: "16px 0",
           }}
         >
-          Waiting for incident data...
+          Awaiting active incident telemetry for automated dispatch synthesis.
         </div>
       </div>
     );
@@ -68,94 +69,121 @@ export default function AIActionPlan({
   };
 
   return (
-    <div className="panel" style={{ flex: 1 }}>
+    <div className="panel" style={{ flex: 1, minWidth: "280px" }}>
       <div className="panel-header">
-        <span className="panel-title">
-          <Sparkles
-            size={13}
-            style={{ verticalAlign: "-2px", marginRight: 4 }}
-          />
-          AI Action Plan
+        <span
+          style={{
+            fontSize: "15px",
+            fontWeight: 600,
+            color: "var(--text-primary)",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Dispatch Recommendation
         </span>
 
-        <div className="badge medium">
-          {Math.round(confidence * 100)}% confidence
-        </div>
+        <span
+          className="badge neutral tabular-nums"
+          style={{ fontSize: "11px", fontWeight: 600 }}
+        >
+          {Math.round(confidence * 100)}% Match Confidence
+        </span>
       </div>
 
       <div
         style={{
-          fontSize: "12px",
+          fontSize: "12.5px",
           color: "var(--text-secondary)",
-          marginBottom: "8px",
+          marginBottom: "10px",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
         }}
       >
-        {victim_count} victims &middot; {urgency} urgency
+        <span className="tabular-nums" style={{ fontWeight: 500 }}>
+          {victim_count} {victim_count === 1 ? "victim" : "victims"}
+        </span>
+        <span>&middot;</span>
+        <span style={{ textTransform: "capitalize", fontWeight: 500 }}>
+          {urgency} Priority
+        </span>
       </div>
 
-      {distributionPlan.map((plan, index) => (
-        <div key={index} className="plan-row">
-          <span>{plan.hospital_name}</span>
-          <span className="plan-victims">
-            {plan.victims_assigned} pts &middot; {plan.beds_available} beds
-          </span>
-        </div>
-      ))}
-
-      <div className="reasoning-box">
-        {reasoningList.map((reason, index) => (
-          <div key={index} className="reasoning-item">
-            <CheckCircle2
-              size={13}
-              color="var(--success)"
-            />{" "}
-            {reason}
+      {/* Allocation breakdown */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+        {distributionPlan.map((plan, index) => (
+          <div key={index} className="plan-row">
+            <span style={{ fontWeight: 500, fontSize: "13px" }}>{plan.hospital_name}</span>
+            <span className="plan-victims tabular-nums">
+              {plan.victims_assigned} assigned &middot; {plan.beds_available} beds free
+            </span>
           </div>
         ))}
       </div>
 
-      <div className="btn-row">
+      {/* Operational Rationale */}
+      <div className="reasoning-box" style={{ marginTop: "12px", padding: "10px 12px" }}>
+        <div
+          style={{
+            fontSize: "11px",
+            fontWeight: 600,
+            color: "var(--text-muted)",
+            textTransform: "uppercase",
+            letterSpacing: "0.04em",
+            marginBottom: "6px",
+          }}
+        >
+          Tactical Rationale
+        </div>
+        {reasoningList.map((reason, index) => (
+          <div
+            key={index}
+            className="reasoning-item"
+            style={{ fontSize: "13px", lineHeight: "1.5", color: "var(--text-primary)" }}
+          >
+            <CheckCircle2
+              size={13}
+              color="var(--success)"
+              style={{ flexShrink: 0, marginTop: "2px" }}
+            />
+            <span>{reason}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Action Controls */}
+      <div className="btn-row" style={{ marginTop: "14px" }}>
         {status === "pending" && (
           <>
             <button
               className="btn btn-approve"
               onClick={() => logDecision("approved")}
+              style={{ padding: "8px 14px", fontSize: "13px", fontWeight: 500 }}
             >
-              <CheckCircle2
-                size={14}
-                style={{
-                  verticalAlign: "-2px",
-                  marginRight: 4,
-                }}
-              />
-              {" "}Approve Plan
+              <CheckCircle2 size={14} style={{ marginRight: 6 }} />
+              Approve Plan
             </button>
 
             <button
               className="btn btn-override"
               onClick={() => logDecision("overridden")}
+              style={{ padding: "8px 12px", fontSize: "13px", fontWeight: 500 }}
             >
-              <AlertTriangle
-                size={14}
-                style={{
-                  verticalAlign: "-2px",
-                  marginRight: 4,
-                }}
-              />
-              {" "}Override
+              <AlertTriangle size={14} style={{ marginRight: 6 }} />
+              Override Plan
             </button>
           </>
         )}
 
         {status === "approved" && (
-          <button className="btn btn-approved" disabled>
-            ✓ Plan Approved
+          <button className="btn btn-approved" disabled style={{ fontSize: "13px" }}>
+            <CheckCircle2 size={14} style={{ marginRight: 6 }} /> Plan Approved & Transmitted
           </button>
         )}
 
         {status === "overridden" && (
-          <button className="btn btn-override" disabled>
-            ⚠ Overridden by you
+          <button className="btn btn-override" disabled style={{ fontSize: "13px" }}>
+            <AlertTriangle size={14} style={{ marginRight: 6 }} /> Dispatch Plan Overridden
           </button>
         )}
       </div>

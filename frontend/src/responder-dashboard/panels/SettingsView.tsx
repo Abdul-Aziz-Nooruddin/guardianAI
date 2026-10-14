@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage, type SupportedLanguage } from "../../shared/context/LanguageContext";
 
 interface SettingsViewProps {
   role?: string;
@@ -9,7 +10,7 @@ export default function SettingsView({
 }: SettingsViewProps) {
   const [notifyCritical, setNotifyCritical] = useState<boolean>(true);
   const [autoRefresh, setAutoRefresh] = useState<boolean>(true);
-  const [language, setLanguage] = useState<string>("English");
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div className="panel" style={{ maxWidth: "420px" }}>
@@ -92,17 +93,20 @@ export default function SettingsView({
 
         <select
           value={language}
-          onChange={(e) => setLanguage(e.target.value)}
+          onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
           style={{
             padding: "6px 10px",
             borderRadius: "6px",
             border: "1px solid var(--border-subtle)",
+            background: "var(--bg-input)",
+            color: "var(--text-primary)",
+            fontSize: "12.5px",
           }}
         >
-          <option value="English">English</option>
-          <option value="Telugu">Telugu</option>
-          <option value="Hindi">Hindi</option>
-          <option value="Urdu">Urdu</option>
+          <option value="en">English (English)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="ur">اردو (Urdu)</option>
         </select>
       </div>
     </div>

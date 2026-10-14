@@ -1,11 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import type { WebSocketMessage } from "../types";
 
-const WS_URL =
-  import.meta.env.VITE_WS_URL || "ws://localhost:8000/ws/dashboard";
+const getWsUrl = () => {
+  if (import.meta.env.VITE_WS_URL) return import.meta.env.VITE_WS_URL;
+  if (typeof window !== "undefined") {
+    const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
+    return `${proto}//${window.location.host}/ws/dashboard`;
+  }
+  return "ws://localhost:8000/ws/dashboard";
+};
+
+const WS_URL = getWsUrl();
 
 export function useWebSocket() {
-  const [lastMessage, setLastMessage] = useState<unknown>(null);
+  const [lastMessage, setLastMessage] = useState<WebSocketMessage | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {

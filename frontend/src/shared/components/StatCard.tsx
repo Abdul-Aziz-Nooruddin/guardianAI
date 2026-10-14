@@ -10,14 +10,13 @@ interface StatCardProps {
 
 export default function StatCard({
   icon,
-  iconBg,
   label,
   value,
   sub,
 }: StatCardProps) {
   return (
     <div className="stat-card">
-      <div className="stat-icon" style={{ background: iconBg }}>
+      <div className="stat-icon">
         {icon}
       </div>
 

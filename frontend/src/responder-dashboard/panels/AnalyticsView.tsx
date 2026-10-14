@@ -65,7 +65,7 @@ export default function AnalyticsView({
                 }}
               >
                 <span>{getIncidentLabel(type)}</span>
-                <span style={{ fontFamily: "var(--font-mono)" }}>
+                <span className="tabular-nums font-mono">
                   {count}
                 </span>
               </div>
@@ -108,7 +108,7 @@ export default function AnalyticsView({
                 }}
               >
                 <span>{incident.location_text ?? "Unknown"}</span>
-                <span style={{ fontFamily: "var(--font-mono)" }}>
+                <span className="tabular-nums font-mono">
                   {Math.round((incident.confidence ?? 0) * 100)}%
                 </span>
               </div>
